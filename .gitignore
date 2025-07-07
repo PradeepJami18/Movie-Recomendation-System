@@ -1,0 +1,13 @@
+# Ignore virtual environment
+recommender_env/
+__pycache__/
+*.pyc
+
+# Ignore secrets
+.streamlit/secrets.toml
+
+# Ignore model files (optional if too large)
+*.pkl
+
+# VS Code files
+.vscode/
