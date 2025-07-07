@@ -14,3 +14,5 @@ __pycache__/
 # Ignore large data files
 combined_data_1.txt
 netflix_ratings.csv
+combined_data_1.txt 
+netflix_ratings.csv 
