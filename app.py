@@ -3,12 +3,22 @@ import pandas as pd
 import pickle
 import tmdbsimple as tmdb
 import math
+import os
+import gdown
 
 # --- TMDB API KEY ---
 tmdb.API_KEY = st.secrets["TMDB_API_KEY"]
 
+# --- Download the model from Google Drive if not present ---
+model_file = "svd_model.pkl"
+gdrive_file_id = "1FThLRfPXf-cbn0spzZSl4OY7zb2nEc-K"
+
+if not os.path.exists(model_file):
+    url = f"https://drive.google.com/uc?id={gdrive_file_id}"
+    gdown.download(url, model_file, quiet=False)
+
 # --- Load model and data ---
-with open("svd_model.pkl", "rb") as f:
+with open(model_file, "rb") as f:
     data = pickle.load(f)
 
 svd_model = data["svd_model"]
@@ -92,4 +102,3 @@ if st.button("Get Recommendations"):
             with col2:
                 st.markdown(f"**🎬 {title}** ({year})")
                 st.markdown(f"{stars} — **{avg_rating}/5**")
-
